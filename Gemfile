@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use sqlite2 as the database for Active Record
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,7 +30,7 @@ gem 'pry'
 gem 'haml'
 gem 'haml-rails'
 
-gem 'mysql2'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
