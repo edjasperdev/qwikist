@@ -1,0 +1,11 @@
+%h1 Hey it's #{current_user.name}
+%p Your email is #{current_user.email}
+%p You provide #{current_user.service}
+
+%ul
+	- @appointments.each do |appt|
+		%li = appt.time
+
+= link_to 'Create an Appointment', new_appointment_path
+= link_to 'Create a Location'
+

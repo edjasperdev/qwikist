@@ -1,0 +1,4 @@
+= form_for(@appointment) do |f|
+	= f.text_field :time, :placeholder => "Appointment Time"
+	= f.hidden_field :user_id, value: current_user.id
+	= f.submit

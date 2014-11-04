@@ -1,0 +1,12 @@
+%h1 Provider Register for Qwikist
+
+= form_for(@provider) do |f|
+	= f.text_field :name, :placeholder => "What is your name?"
+	= f.text_field :email, :placeholder => "What is your email?"
+	= f.text_field :service, :placeholder => "What service do you provide"
+	= f.password_field :password, :placeholder => "Make a password"
+	= f.password_field :password_confirmation, :placeholder => "Retype password"
+
+	= f.submit
+
+	
