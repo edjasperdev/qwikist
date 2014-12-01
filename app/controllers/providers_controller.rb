@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
 	before_action :set_provider, only: [:show]
+	
 	def create
 		@provider = Provider.new(provider_params)
 		@provider.save
@@ -11,6 +12,7 @@ class ProvidersController < ApplicationController
 	end
 
 	def show
+		@locations = current_user.locations
 		@appointments = current_user.appointments
 	end
 

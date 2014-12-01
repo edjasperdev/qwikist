@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104174250) do
+ActiveRecord::Schema.define(version: 20141127174815) do
 
   create_table "appointments", force: true do |t|
-    t.string   "time"
+    t.time     "time"
+    t.date     "date"
     t.boolean  "booked"
     t.integer  "user_id"
     t.integer  "location_id"

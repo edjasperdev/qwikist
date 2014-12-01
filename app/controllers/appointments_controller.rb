@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-	before_action :set_appointment, only: [:show, :index, :new]
+	before_action :set_appointment, only: [:show]
 
 	def index
 		@appointments = current_user.appointments
@@ -21,6 +21,6 @@ class AppointmentsController < ApplicationController
 	end
 
 	def appointment_params
-		params.require(:appointment).permit(:time)
+		params.require(:appointment).permit(:time, :date, :user_id, :provider_id)
 	end
 end

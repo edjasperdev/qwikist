@@ -2,10 +2,22 @@
 %p Your email is #{current_user.email}
 %p You provide #{current_user.service}
 
+%h3 Your availabile times:
+
 %ul
 	- @appointments.each do |appt|
-		%li = appt.time
+		%li 
+			= appt.time
+
+%h3 Your locations:
+
+%ul
+	-@locations.each do |location|
+		%li
+			=location.name
+			%br
+			=location.address
+
 
 = link_to 'Create an Appointment', new_appointment_path
-= link_to 'Create a Location'
-
+= link_to 'Create a Location', new_location_path
