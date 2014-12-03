@@ -4,7 +4,6 @@ class CreateMessages < ActiveRecord::Migration
       t.string :subject
       t.text :body
      	t.belongs_to :user
-     	t.belongs_to :provider
       t.timestamps
     end
   end

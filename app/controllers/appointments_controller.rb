@@ -15,6 +15,9 @@ class AppointmentsController < ApplicationController
 		@appointment = Appointment.new
 	end
 
+	def show
+	end
+
 	private
 	def set_appointment
 		@appointment = Appointment.find_or_create_by(params[:id])
