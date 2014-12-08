@@ -8,10 +8,9 @@ Rails.application.routes.draw do
    root 'welcome#index'
    get 'welcome/new'
 
-   resources :sessions, only: [:new, :create]
+   resources :sessions, only: [:new, :create, :destroy]
    resources :users
    resources :appointments
-   resources :providers
    resources :locations
 
 

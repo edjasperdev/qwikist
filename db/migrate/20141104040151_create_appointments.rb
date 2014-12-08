@@ -4,7 +4,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.time :time
       t.date :date
       t.boolean :booked
-      t.belongs_to :user, :location, :provider
+      t.belongs_to :user, :location
       t.timestamps
     end
   end

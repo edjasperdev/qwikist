@@ -2,12 +2,16 @@
 %p Your email is #{current_user.email}
 %p You provide #{current_user.service}
 
+-if current_user.provider?
+	%h1 Qwikist Certified!!!
+	
+
 %h3 Your availabile times:
 
 %ul
 	- @appointments.each do |appt|
 		%li 
-			= appt.time
+			=link_to appt.time, appointment_path
 
 %h3 Your locations:
 

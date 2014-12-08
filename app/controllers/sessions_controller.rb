@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
 
 	def create
-		user = User.find_by_email(params[:email]) || user = Provider.find_by_email(params[:email])
+		user = User.find_by_email(params[:email])
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to provider_path(:id)
+			redirect_to current_user
 		else
 			flash.now[:error] = "There was a problem authenticating."
 			render action: 'new'
