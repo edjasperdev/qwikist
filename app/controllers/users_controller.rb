@@ -3,8 +3,14 @@ class UsersController < ApplicationController
 	
 	def create
 		@user = User.new(user_params)
-		@user.save
-		redirect_to current_user
+		if @user.save
+			flash[:notice] = "Welcome to the site"
+			session[:user_id] = @user.id
+			redirect_to @user
+		else
+			flash[:notice] = "There was a problem creating your account. Please try again."
+			render new
+		end
 	end
 
 	def new
