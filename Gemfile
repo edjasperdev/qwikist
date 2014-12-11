@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use sqlite2 as the database for Active Record
-gem 'mysql2'
+
 gem 'bcrypt'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -34,7 +34,14 @@ gem 'haml-rails'
 
 
 group :development, :test do
+	gem 'mysql2'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
 end
+
+group :production do
+     gem 'pg'
+     gem 'rails_12factor'
+end
+
 

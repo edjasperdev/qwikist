@@ -1,17 +1,19 @@
 %h1 Hey it's #{current_user.name}
 %p Your email is #{current_user.email}
-%p You provide #{current_user.service}
-
 -if current_user.provider?
 	%h1 Qwikist Certified!!!
-	
+	%p You provide #{current_user.service}
+
+%h3 Booked Appointments:
 
 %h3 Your availabile times:
 
 %ul
-	- @appointments.each do |appt|
+	- @my_appointments.each do |appt|
 		%li 
 			=link_to appt.time, appointment_path
+
+= link_to 'Create an Appointment', new_appointment_path
 
 %h3 Your locations:
 
@@ -22,6 +24,15 @@
 			%br
 			=location.address
 
-
-= link_to 'Create an Appointment', new_appointment_path
 = link_to 'Create a Location', new_location_path
+
+%br
+%br
+View All Available Appointments
+%br
+
+-@appointments.each do |appt|
+	%li 
+		=link_to appt.time, appointment_path
+
+

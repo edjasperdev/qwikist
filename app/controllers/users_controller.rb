@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
 	def show
 		@locations = current_user.locations
-		@appointments = current_user.appointments
+		@my_appointments = current_user.appointments
+		@appointments = Appointment.all
 	end
 
 	def index
