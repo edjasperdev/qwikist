@@ -1,5 +1,0 @@
-= form_for(@appointment) do |f|
-	=	f.date_field :date, :min=> "2014-11-00", :value => "2015-01-01"
-	= f.time_field :time, :placeholder => "Appointment Time"
-	= f.hidden_field :user_id, value: current_user.id
-	= f.submit

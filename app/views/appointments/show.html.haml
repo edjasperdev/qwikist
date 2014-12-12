@@ -1,4 +1,7 @@
 %br
 =@appointment.time
 %br
-Book appointment 
+=@appointment.user.name
+
+/ -if !current_user.provider
+/ = f.select(:furniture_type, options_for_select(@furniture_types))

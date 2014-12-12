@@ -16,14 +16,19 @@ class AppointmentsController < ApplicationController
 	end
 
 	def show
+		@locations = @appointment.user.locations.all.uniq
+	end
+
+	def book
+
 	end
 
 	private
 	def set_appointment
-		@appointment = Appointment.find_or_create_by(params[:id])
+		@appointment = Appointment.find(params[:id])
 	end
 
 	def appointment_params
-		params.require(:appointment).permit(:time, :date, :user_id, :provider_id)
+		params.require(:appointment).permit(:time, :date, :user_id)
 	end
 end
