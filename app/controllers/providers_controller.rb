@@ -3,7 +3,9 @@ class ProvidersController < ApplicationController
 
 	def show
 		@locations = current_provider.locations
-		@availabilities = current_provider.availabilities
+		@my_availabilities = current_provider.availabilities
+		@availabilities = Availability.all
+		@my_appointments = current_provider.appointments
 	end
 
 	private

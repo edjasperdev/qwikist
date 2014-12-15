@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20141215010331) do
 
   create_table "appointments", force: true do |t|
-    t.datetime "date"
+    t.date     "date"
+    t.time     "time"
     t.integer  "member_id"
     t.integer  "provider_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

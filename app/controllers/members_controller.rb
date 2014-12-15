@@ -4,7 +4,9 @@ class MembersController < ApplicationController
 
 	def show
 		@locations = current_member.locations
-		@availabilities = current_member.availabilities
+		@my_availabilities = current_member.availabilities
+		@availabilities = Availability.all
+		@my_appointments = current_member.appointments
 	end
 
 	private

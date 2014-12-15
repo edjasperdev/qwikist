@@ -13,9 +13,11 @@ class AvailabilitiesController < ApplicationController
 
 	def new
 		@availability = Availability.new
+		@appointment = Appointment.new
 	end
 
 	def show
+		@locations = @availability.provider.locations.all.map{|location| location.name} 
 	end
 
 	def edit
@@ -43,7 +45,7 @@ class AvailabilitiesController < ApplicationController
 	private
 
 	def set_availability
-		@availability = Availability.find_by_id(params[:availability_id])
+		@availability = Availability.find_by(params[:id])
 	end
 
 	def availability_params

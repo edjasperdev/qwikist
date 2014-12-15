@@ -1,7 +1,14 @@
 
 %p 
 	="#{@availability.time} : #{@availability.date}" 
-	=link_to "Edit", edit_availability_path
-	=link_to "Delete", availability_path, method: :delete
 
-Book Now
+%p Availability owned by: #{@availability.provider.name}
+
+= form_for(Appointment.new) do |f|
+	= f.label :location_id, "Select a location"
+	= f.select(:location_id, options_for_select(@locations))
+	=	f.hidden_field :date, value: @availability.date
+	= f.hidden_field :time, value: @availability.time
+	= f.hidden_field :provider_id, value: @availability.provider.id
+	= f.hidden_field :member_id, value: current_member.id
+	=button_to("Book Now", :action => "create", :controller => "appointments")

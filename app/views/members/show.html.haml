@@ -1,13 +1,25 @@
 %h1 Hey it's #{current_member.name}
 %p Your email is #{current_member.email}
 
-%p Your available times:
+%p Your Booked Appointments
 %ul
-	-@availabilities.each do |availability|
+	-@my_appointments.each do |appointment|
 		%li 
-			=link_to "#{availability.time} : #{availability.date}", availability_path
+			#{appointment.time} : #{appointment.date} |
+			/ At: #{appointment.location}
+			With: #{appointment.provider.name}
+			=link_to "Delete", appointment_path(appointment), method: :delete
 
-=link_to "Create a Location",new_availability_path
+
+%p Your Available Times:
+%ul
+	-@my_availabilities.each do |availability|
+		%li 
+			#{availability.time} : #{availability.date}
+			=link_to "Edit", edit_availability_path(availability)
+			=link_to "Delete", availability_path(availability), method: :delete
+
+=link_to "Add availability",new_availability_path
 
 %p Your locations:
 %ul
@@ -16,4 +28,10 @@
 			=location.name 
 
 =link_to "Create a Location", new_location_path
+
+%p Available to book:
+%ul
+	-@availabilities.each do |availability|
+		%li 
+			=link_to "#{availability.time} : #{availability.date}", availability_path(availability)
 
