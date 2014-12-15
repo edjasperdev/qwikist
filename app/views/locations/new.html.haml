@@ -4,6 +4,7 @@
 	%br
 	= f.label :address, "Location Address"
 	= f.text_field :address
-	= f.hidden_field :user_id, value: current_user.id
-	%br
+	= f.hidden_field :provider_id, value: @provider.id
+	= f.hidden_field :member_id, value: @member.id
+	%brr
 	= f.submit

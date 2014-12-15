@@ -2,7 +2,6 @@ class AppointmentsController < ApplicationController
 	before_action :set_appointment, only: [:show]
 
 	def index
-		@appointments = current_user.appointments
 	end
 
 	def create
@@ -16,7 +15,7 @@ class AppointmentsController < ApplicationController
 	end
 
 	def show
-		@locations = @appointment.user.locations.all.uniq
+		# @locations = @appointment.user.locations.all.uniq
 	end
 
 	def book
