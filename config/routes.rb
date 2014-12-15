@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for :providers, :controllers => {:registrations => "providers/registrations"} do 
+    get '/providers /sign_out' => 'devise/sessions#destroy'
+  end
 
+  devise_for :members, :controllers => {:registrations => "members/registrations"} do 
+    get '/members /sign_out' => 'devise/sessions#destroy'
+  end
+
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,14 +16,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/new'
 
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
-  resources :users
-  resources :sessions
-  resources :users
+  resources :members
+  resources :providers
   resources :appointments
   resources :locations
+
+
 
 
 

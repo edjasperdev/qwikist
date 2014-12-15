@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 gem 'pry'
 gem 'haml'
 gem 'haml-rails'
+gem 'devise'
 
 
 

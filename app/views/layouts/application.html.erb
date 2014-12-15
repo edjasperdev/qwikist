@@ -7,17 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if current_user %>
-    Logged in as <%= current_user.name %>.
-    <%= link_to "Log Out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign Up", sign_up_path %> or
-    <%= link_to "Log In", log_in_path %>
-  <% end %>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% if member_signed_in? %>
+	Logged in as <strong><%= current_member.name %></strong> 
+	<%=link_to "Logout", destroy_member_session_path, method: :delete%>
+<% elsif provider_signed_in? %>
+	Logged in as <strong><%= current_provider.name %></strong> 
+	<%=link_to "Logout", destroy_provider_session_path, method: :delete%>
+<% else %>
+	<%=link_to "Login/SignUp", welcome_new_path%>
 <% end %>
+
+	<% flash.each do |name, msg| %>
+  	<%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
 
 <%= yield %>
 

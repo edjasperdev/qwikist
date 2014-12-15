@@ -1,7 +1,7 @@
 class Appointment < ActiveRecord::Base
-	#Allow Appt to have many users, i.e. to sign up for a group class
-	has_many :users
-	belongs_to :user
+	belongs_to :member
+	belongs_to :provider
+	has_one :location
 
 
 

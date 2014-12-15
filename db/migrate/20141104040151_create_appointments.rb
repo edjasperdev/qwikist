@@ -1,10 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration
   def change
-    create_table :appointments do |t|
-      t.time :time
-      t.date :date
-      t.boolean :booked
-      t.belongs_to :user, :location
+  	create_table :appointments do |t|
+      t.datetime :date
+      t.belongs_to :member, :provider
       t.timestamps
     end
   end

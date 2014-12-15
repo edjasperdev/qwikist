@@ -1,0 +1,8 @@
+= form_for(@provider) do |f|
+	= f.text_field :name, :placeholder => "What is your name?"
+	%br
+	= f.text_field :email, :placeholder => "What is your email?"
+	%br
+	= f.text_field :service, :placeholder => "What sevice do you provide?"
+	%br
+	= f.submit

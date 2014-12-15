@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202225806) do
+ActiveRecord::Schema.define(version: 20141215010331) do
 
   create_table "appointments", force: true do |t|
+    t.datetime "date"
+    t.integer  "member_id"
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "availabilities", force: true do |t|
     t.time     "time"
     t.date     "date"
-    t.boolean  "booked"
-    t.integer  "user_id"
-    t.integer  "location_id"
+    t.integer  "member_id"
+    t.integer  "provider_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,30 +34,63 @@ ActiveRecord::Schema.define(version: 20141202225806) do
     t.string   "name"
     t.string   "address"
     t.boolean  "public"
-    t.integer  "user_id"
-    t.integer  "appointment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: true do |t|
-    t.string   "subject"
-    t.text     "body"
-    t.integer  "user_id"
+  create_table "member_locations", force: true do |t|
+    t.integer  "member_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "members", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "service"
-    t.boolean  "provider"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
+  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+
+  create_table "provider_locations", force: true do |t|
+    t.integer  "provider_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "service"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+  end
+
+  add_index "providers", ["email"], name: "index_providers_on_email", unique: true, using: :btree
+  add_index "providers", ["reset_password_token"], name: "index_providers_on_reset_password_token", unique: true, using: :btree
 
 end

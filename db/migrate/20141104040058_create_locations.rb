@@ -4,7 +4,6 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.boolean :public
-      t.belongs_to :user, :appointment
       t.timestamps
     end
   end
