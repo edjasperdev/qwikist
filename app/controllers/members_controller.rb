@@ -1,12 +1,10 @@
 class MembersController < ApplicationController
 	before_action :set_member, only: [:show]
 	
-	def new
-		@member = Member.new
-	end
-
 
 	def show
+		@locations = current_member.locations
+		@availabilities = current_member.availabilities
 	end
 
 	private

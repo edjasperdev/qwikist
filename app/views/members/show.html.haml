@@ -1,2 +1,19 @@
 %h1 Hey it's #{current_member.name}
 %p Your email is #{current_member.email}
+
+%p Your available times:
+%ul
+	-@availabilities.each do |availability|
+		%li 
+			=link_to "#{availability.time} : #{availability.date}", availability_path
+
+=link_to "Create a Location",new_availability_path
+
+%p Your locations:
+%ul
+	-@locations.each do |location|
+		%li 
+			=location.name 
+
+=link_to "Create a Location", new_location_path
+

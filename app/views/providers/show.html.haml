@@ -2,3 +2,19 @@
 %p Your email is #{current_provider.email}
 %p You provide #{current_provider.service}
 
+%p Your available times:
+
+%ul
+	-@availabilities.each do |availability|
+		%li 
+			=link_to "#{availability.time} : #{availability.date}", availability_path
+
+=link_to "Add availability",new_availability_path
+
+%p Your locations:
+%ul
+	-@locations.each do |location|
+		%li 
+			=location.name 
+
+=link_to "Create a Location", new_location_path

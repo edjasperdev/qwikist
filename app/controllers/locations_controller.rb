@@ -7,8 +7,15 @@ class LocationsController < ApplicationController
 
 	def create
 		@location = Location.new(location_params)
-		@location.save
-		redirect_to @provider
+		if member_signed_in?
+			@location.members << current_member
+			@location.save
+  		redirect_to member_path(current_member)
+  	elsif provider_signed_in?
+  		@location.providers << current_provider
+  		@location.save
+  		redirect_to provider_path(current_provider)
+  	end
 	end
 
 	def show
@@ -16,6 +23,6 @@ class LocationsController < ApplicationController
 
 	private
 	def location_params
-		params.require(:location).permit(:name, :address, :public, :member_id, :provider_id)
+		params.require(:location).permit(:name, :address, :public)
 	end
 end

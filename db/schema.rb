@@ -38,12 +38,15 @@ ActiveRecord::Schema.define(version: 20141215010331) do
     t.datetime "updated_at"
   end
 
-  create_table "member_locations", force: true do |t|
+  create_table "member_locations", id: false, force: true do |t|
     t.integer  "member_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "member_locations", ["location_id"], name: "index_member_locations_on_location_id", using: :btree
+  add_index "member_locations", ["member_id"], name: "index_member_locations_on_member_id", using: :btree
 
   create_table "members", force: true do |t|
     t.string   "name"
@@ -65,12 +68,15 @@ ActiveRecord::Schema.define(version: 20141215010331) do
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
-  create_table "provider_locations", force: true do |t|
+  create_table "provider_locations", id: false, force: true do |t|
     t.integer  "provider_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "provider_locations", ["location_id"], name: "index_provider_locations_on_location_id", using: :btree
+  add_index "provider_locations", ["provider_id"], name: "index_provider_locations_on_provider_id", using: :btree
 
   create_table "providers", force: true do |t|
     t.string   "name"

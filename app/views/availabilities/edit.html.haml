@@ -1,0 +1,14 @@
+%h1 Edit Availability
+
+= form_for(@availability) do |f|
+	=	f.date_field :date, :min=> "2014-11-00", :value => "2015-01-01"
+	= f.time_field :time, :placeholder => "Available Time"
+	-if member_signed_in?
+		= f.hidden_field :member_id, value: current_member.id
+	-elsif provider_signed_in?
+		= f.hidden_field :provider_id, value: current_provider.id
+	= f.submit
+
+= link_to 'Show', @availability
+\|
+= link_to 'Back', @availability

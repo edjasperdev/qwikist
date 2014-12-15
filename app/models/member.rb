@@ -5,8 +5,7 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :availabilities
 	has_many :appointments 
-	has_many :locations, :through => :member_locations
-	has_many :member_locations
+	has_and_belongs_to_many :locations, :join_table => :member_locations
 	has_many :providers, :through => :appointments
 	has_many :messages 
 end

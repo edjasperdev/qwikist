@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :providers
   resources :appointments
   resources :locations
+  resources :availabilities
 
 
 

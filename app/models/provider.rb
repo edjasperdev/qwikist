@@ -6,8 +6,7 @@ class Provider < ActiveRecord::Base
 	has_many :messages 
 	has_many :availabilities
 	has_many :appointments
-	has_many :provider_locations
-	has_many :locations, :through => :provider_locations
+	has_and_belongs_to_many :locations, :join_table => :provider_locations
 	has_many :members, :through => :appointments
 
 end

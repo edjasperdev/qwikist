@@ -2,7 +2,8 @@ class ProvidersController < ApplicationController
 	before_action :set_provider, only: [:show]
 
 	def show
-		# @locations = @provider.locations
+		@locations = current_provider.locations
+		@availabilities = current_provider.availabilities
 	end
 
 	private
