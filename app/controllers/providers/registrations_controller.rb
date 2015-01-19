@@ -10,9 +10,13 @@ before_filter :configure_permitted_parameters
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if resource.save
+      email = params[:provider][:email]
+      WelcomeMailer.provider_intro(email).deliver
+    end
+  end
 
   # GET /resource/edit
   # def edit

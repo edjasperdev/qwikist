@@ -19,5 +19,13 @@ module Qwikist
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    ActionMailer::Base.smtp_settings = {
+      :port =>           '587',
+      :address =>        'smtp.mandrillapp.com',
+      :user_name =>      "edwardjasperjr@gmail.com",#ENV['MANDRILL_USERNAME'],
+      :password =>       "EzRaD10IJD95ub2OQtz4sQ",#ENV['MANDRILL_APIKEY'],
+      :authentication => :plain
+    }
   end
 end

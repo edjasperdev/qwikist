@@ -1,16 +1,25 @@
 %h1 Hey it's #{current_member.name}
 %p Your email is #{current_member.email}
 
+%p Pending Appointments
+%ul
+	-@my_appointments.each do |appointment|
+		-if !appointment.confirmed?
+			%li
+				#{appointment.time} : #{appointment.date} |
+				/ At: #{appointment.location}
+				With: #{appointment.provider.name}
+				/ =link_to "Confirm", appointment_path(appointment), method: :delete
+
 %p Your Booked Appointments
 %ul
 	-@my_appointments.each do |appointment|
 		%li 
-			#{appointment.time} : #{appointment.date} |
-			/ At: #{appointment.location}
-			With: #{appointment.provider.name}
-			=link_to "Delete", appointment_path(appointment), method: :delete
-
-
+			-if appointment.confirmed?
+				#{appointment.time} : #{appointment.date} |
+				/ At: #{appointment.location}
+				With: #{appointment.member.name}
+				=link_to "Delete", appointment_path(appointment), method: :delete
 %p Your Available Times:
 %ul
 	-@my_availabilities.each do |availability|

@@ -1,7 +1,7 @@
 %br
 =@appointment.time
 %br
-=@appointment.user.name
+=@appointment.member.name
 
 / -if !current_user.provider
 / = f.select(:furniture_type, options_for_select(@furniture_types))

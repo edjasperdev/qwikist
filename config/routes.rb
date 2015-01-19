@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     get '/providers /sign_out' => 'devise/sessions#destroy'
   end
 
-  devise_for :members, :controllers => {:registrations => "members/registrations"} do 
+  devise_for :members, :controllers => {:omniauth_callbacks => "omniauth_callbacks", :registrations => "members/registrations"} do 
     get '/members /sign_out' => 'devise/sessions#destroy'
   end
+   # {:omniauth_callbacks => "omniauth_callbacks"}
 
  
   # The priority is based upon order of creation: first created -> highest priority.
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   resources :appointments
   resources :locations
   resources :availabilities
+
+  get "/auth/:provider/callback" => "autentications#create"
 
 
 

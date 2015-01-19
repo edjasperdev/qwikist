@@ -11,4 +11,4 @@
 	= f.hidden_field :time, value: @availability.time
 	= f.hidden_field :provider_id, value: @availability.provider.id
 	= f.hidden_field :member_id, value: current_member.id
-	=button_to("Book Now", :action => "create", :controller => "appointments")
+	=button_to("Request Session", :action => "create", :controller => "appointments")

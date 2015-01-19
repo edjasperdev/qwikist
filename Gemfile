@@ -31,6 +31,8 @@ gem 'pry'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 
@@ -41,8 +43,8 @@ group :development, :test do
 end
 
 group :production do
-     gem 'pg'
-     gem 'rails_12factor'
+	gem 'mysql2'
+  gem 'rails_12factor'
 end
 
 

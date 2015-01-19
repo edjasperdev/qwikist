@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20141215010331) do
   create_table "appointments", force: true do |t|
     t.date     "date"
     t.time     "time"
+    t.boolean  "confirmed",   default: false
     t.integer  "member_id"
     t.integer  "provider_id"
     t.integer  "location_id"
@@ -54,6 +55,8 @@ ActiveRecord::Schema.define(version: 20141215010331) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
@@ -85,6 +88,8 @@ ActiveRecord::Schema.define(version: 20141215010331) do
     t.string   "email"
     t.string   "service"
     t.string   "password_digest"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false

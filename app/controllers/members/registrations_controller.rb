@@ -9,9 +9,13 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super 
+    if resource.save
+      email = params[:member][:email]
+      WelcomeMailer.member_intro(email).deliver
+    end
+  end
 
   # GET /resource/edit
   # def edit
