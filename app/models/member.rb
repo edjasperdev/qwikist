@@ -3,7 +3,7 @@ class Member < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-  # devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :availabilities
   has_many :appointments
@@ -12,7 +12,7 @@ class Member < ActiveRecord::Base
   has_many :messages
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |member|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
       member.provider = auth.provider
       member.uid = auth.uid
       member.name = auth.info.name
@@ -21,5 +21,9 @@ class Member < ActiveRecord::Base
       member.oauth_expires_at = Time.at(auth.credentials.expires_at)
       member.save!
     end
+  end
+
+  def password_required?
+  	super && provider.blank?
   end
 end

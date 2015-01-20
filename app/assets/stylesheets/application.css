@@ -11,5 +11,24 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require pace-theme-flash.css
+ *= require jquery.gritter.css
+ *= require datepicker.css
+ *= require rickshaw.css
+ *= require morris.css
+ *= require select2.css
+ *= require jquery-jvectormap-1.2.2.css
+ *= require bootstrap.min.css
+ *= require bootstrap-theme.min.css
+ *= require font-awesome.css
+ *= require animate.min.css
+ *= require jquery.scrollbar.css
+ *= require style.css
+ *= require responsive.css
+ *= require custom-icon-set.css
  *= require_self
+
+
+
+
  */

@@ -12,7 +12,7 @@ class Provider < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |provider|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |provider|
       provider.provider = auth.provider
       provider.uid = auth.uid
       provider.name = auth.info.name

@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20141215010331) do
     t.string   "password_digest"
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
@@ -90,6 +92,8 @@ ActiveRecord::Schema.define(version: 20141215010331) do
     t.string   "password_digest"
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
